@@ -106,6 +106,7 @@ section {
   background-color: #fff;
   padding: 40px;
   margin: 40px auto;
+  font-family: "Roboto", sans-serif;
 }
 
 label {
@@ -147,8 +148,9 @@ ul {
 }
 
 li {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #000;
   padding: 20px;
+  font-weight: 400;
 }
 
 li:last-child {
