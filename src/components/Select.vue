@@ -72,7 +72,7 @@ export default defineComponent({
 label {
   display: block;
   font-size: 20px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 select {

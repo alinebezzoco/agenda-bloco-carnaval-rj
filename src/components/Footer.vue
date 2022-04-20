@@ -23,4 +23,13 @@ footer {
     text-align: center;
     font-size: 14px;
 }
+
+@media (min-device-width: 768px) {
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 16px;
+  }
+}
 </style>
