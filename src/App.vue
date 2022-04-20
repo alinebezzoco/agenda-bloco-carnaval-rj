@@ -1,16 +1,13 @@
 <template>
   <main>
-    <section class="content">
-      <h1 aria-label="Agenda de blocos carnaval 2022 - Rio de Janeiro/RJ">
+    <section>
+      <h1 aria-label="Agenda de blocos">
         AGENDA DE BLOCOS
-        <small>Rio de Janeiro/RJ</small>
+        <small aria-label="Rio de Janeiro/RJ">Rio de Janeiro/RJ</small>
       </h1>
       <label aria-label="Selecione um dia">Selecione um dia</label>
       <select v-model="selectedDate" @change="onChangeDate">
-        <option value="" disabled selected aria-label="Selecionar">
-          Selecione
-        </option>
-        <option value="quarta" aria-label="Quarta - 20/04">
+        <option value="quarta" selected aria-label="Quarta - 20/04">
           Quarta - 20/04
         </option>
         <option value="quinta" aria-label="Quinta - 21/04">
@@ -37,7 +34,8 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from "vue";
 import axios from "axios";
 
 export default {
@@ -46,8 +44,11 @@ export default {
     return {
       listDate: [],
       listBlocos: [],
-      selectedDate: "",
+      selectedDate: "quarta",
     };
+  },
+  mounted() {
+    this.onChangeDate();
   },
   methods: {
     loadDate() {
@@ -62,7 +63,7 @@ export default {
         });
     },
     onChangeDate(event) {
-      const date = event.target.value;
+      const date = event === undefined ? 'quarta' : event.target.value;
       axios
         .get(
           `https://agenda-blocos-rj-default-rtdb.firebaseio.com/content/0/${date}/.json`,
