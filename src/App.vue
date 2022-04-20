@@ -1,10 +1,5 @@
 <template>
-  <header>
-    <h1>
-      AGENDA DE BLOCOS
-      <small>Rio de Janeiro/RJ</small>
-    </h1>
-  </header>
+  <Header />
   <main>
     <section>
       <Select />
@@ -15,40 +10,20 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import Header from "./components/Header.vue";
 import Select from "./components/Select.vue";
 import Footer from "./components/Footer.vue";
 
 export default defineComponent({
   name: "App",
   components: {
+    Header,
     Select,
     Footer,
   },
 });
 </script>
 <style scoped>
-
-header {
-  background-color: #fff;
-  padding: 20px 0;
-}
-h1 {
-  font-family: "Calistoga", cursive;
-  font-size: 48px;
-  text-align: center;
-  color: #a779c6;
-}
-
-@media (min-device-width: 768px) {
-  h1 {
-    font-size: 56px;
-  }
-}
-
-small {
-  display: block;
-}
-
 section {
   display: flex;
   justify-content: center;

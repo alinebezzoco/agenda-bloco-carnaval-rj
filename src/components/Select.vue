@@ -1,5 +1,5 @@
 <template>
-  <label>Selecione um dia</label>
+  <label>Selecione um dia e veja quais blocos irão ocorrer na cidade</label>
   <select
     v-model="selectedDate"
     @change="onChangeDate"
