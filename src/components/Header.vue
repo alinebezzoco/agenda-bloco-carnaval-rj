@@ -14,10 +14,13 @@ export default defineComponent({
   name: "Header",
 });
 </script>
+
 <style scoped>
 header {
   background-color: #fff;
   padding: 20px 0;
+  position: sticky;
+  top: 0;
 }
 
 h1 {

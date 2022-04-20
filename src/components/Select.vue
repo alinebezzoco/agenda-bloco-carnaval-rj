@@ -68,6 +68,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped>
 label {
   display: block;

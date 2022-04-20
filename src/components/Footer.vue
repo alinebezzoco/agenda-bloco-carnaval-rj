@@ -17,15 +17,13 @@ export default defineComponent({
 
 <style scoped>
 footer {
-    background-color: white;
-    padding: 10px 0;
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
-    font-size: 14px;
-    bottom: 0;
-    position: relative;
-    width: 100%;
-    height: 20px;
-    top: auto;
+  background-color: white;
+  padding: 10px 0;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 </style>

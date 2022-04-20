@@ -23,6 +23,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped>
 section {
   display: flex;
