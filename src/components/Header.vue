@@ -22,7 +22,7 @@ header {
 
 h1 {
   font-family: "Calistoga", cursive;
-  font-size: 48px;
+  font-size: 40px;
   text-align: center;
   color: #a779c6;
 }

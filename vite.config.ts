@@ -11,9 +11,9 @@ export default defineConfig({
       manifest: {
         name: "Agenda de Blocos - Carnaval RJ",
         short_name: "Agenda de Blocos",
-        theme_color: "#ffffff",
+        theme_color: "#fff",
         display: "standalone",
-        background_color: "#ffffff",
+        background_color: "#fff",
         icons: []
       },
     }),
