@@ -83,7 +83,6 @@ export default {
 h1 {
   font-family: "Calistoga", cursive;
   font-size: 48px;
-  letter-spacing: 3px;
   padding-bottom: 40px;
   text-align: center;
   color: #a779c6;
