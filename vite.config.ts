@@ -14,6 +14,7 @@ export default defineConfig({
         theme_color: "#ffffff",
         display: "standalone",
         background_color: "#ffffff",
+        icons: []
       },
     }),
   ],

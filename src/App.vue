@@ -1,90 +1,40 @@
 <template>
+  <header>
+    <h1>
+      AGENDA DE BLOCOS
+      <small>Rio de Janeiro/RJ</small>
+    </h1>
+  </header>
   <main>
     <section>
-      <h1 aria-label="Agenda de blocos">
-        AGENDA DE BLOCOS
-        <small aria-label="Rio de Janeiro/RJ">Rio de Janeiro/RJ</small>
-      </h1>
-      <label aria-label="Selecione um dia">Selecione um dia</label>
-      <select v-model="selectedDate" @change="onChangeDate">
-        <option value="quarta" selected aria-label="Quarta - 20/04">
-          Quarta - 20/04
-        </option>
-        <option value="quinta" aria-label="Quinta - 21/04">
-          Quinta - 21/04
-        </option>
-        <option value="sexta" aria-label="Sexta - 22/04">Sexta - 22/04</option>
-        <option value="sabado" aria-label="Sábado - 23/04">
-          Sábado - 23/04
-        </option>
-        <option value="domingo" aria-label="Domingo - 24/04">
-          Domingo - 24/04
-        </option>
-      </select>
-      <ul v-if="selectedDate">
-        <li v-for="(item, index) in listBlocos">
-          <p :aria-label="item.nome">
-            <strong>{{ item.nome }}</strong>
-          </p>
-          <p :aria-label="item.local">{{ item.local }}</p>
-          <p :aria-label="item.hora">{{ item.hora }}</p>
-        </li>
-      </ul>
+      <Select />
     </section>
   </main>
+  <Footer />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import axios from "axios";
+import Select from "./components/Select.vue";
+import Footer from "./components/Footer.vue";
 
-export default {
+export default defineComponent({
   name: "App",
-  data() {
-    return {
-      listDate: [],
-      listBlocos: [],
-      selectedDate: "quarta",
-    };
+  components: {
+    Select,
+    Footer,
   },
-  mounted() {
-    this.onChangeDate();
-  },
-  methods: {
-    loadDate() {
-      axios
-        .get("https://agenda-blocos-rj-default-rtdb.firebaseio.com/.json", {
-          headers: {
-            Accept: "application/json",
-          },
-        })
-        .then((res) => {
-          this.listDate = res.data.content;
-        });
-    },
-    onChangeDate(event) {
-      const date = event === undefined ? 'quarta' : event.target.value;
-      axios
-        .get(
-          `https://agenda-blocos-rj-default-rtdb.firebaseio.com/content/0/${date}/.json`,
-          {
-            headers: {
-              Accept: "application/json",
-            },
-          }
-        )
-        .then((res) => {
-          this.listBlocos = res.data;
-        });
-    },
-  },
-};
+});
 </script>
 <style scoped>
+
+header {
+  background-color: #fff;
+  padding: 20px 0;
+}
 h1 {
   font-family: "Calistoga", cursive;
   font-size: 48px;
-  padding-bottom: 40px;
   text-align: center;
   color: #a779c6;
 }
@@ -108,53 +58,5 @@ section {
   padding: 40px;
   margin: 40px auto;
   font-family: "Roboto", sans-serif;
-}
-
-label {
-  display: block;
-  font-size: 20px;
-  padding-bottom: 10px;
-}
-
-select {
-  width: 100%;
-  height: 40px;
-  border-radius: 4px;
-  background-color: #fff;
-  margin-bottom: 40px;
-  padding: 0 10px;
-  font-size: 20px;
-}
-
-@media (min-device-width: 768px) {
-  select {
-    width: 50%;
-  }
-}
-
-option {
-  font-size: 20px;
-}
-
-ul {
-  font-size: 20px;
-  list-style-type: none;
-  width: 100%;
-}
-
-@media (min-device-width: 768px) {
-  ul {
-    width: 50%;
-  }
-}
-
-li {
-  border-bottom: 1px solid #000;
-  padding: 20px;
-  font-weight: 400;
-}
-
-li:last-child {
-  border-bottom: none;
 }
 </style>
