@@ -12,40 +12,33 @@
     <option value="domingo">Domingo - 24/04</option>
   </select>
   <ul v-if="selectedDate">
-    <li v-for="(item, index) in listBlocos">
+    <li v-for="(item, index) in listStreetCarnival" :key="item.id">
       <p>
         <strong>{{ item.nome }}</strong>
       </p>
-      <p>{{ item.local }}</p>
+      <p :class="[item.local === 'local a confirmar' && 'highlight', 'title']">{{ item.local }}</p>
       <p>{{ item.hora }}</p>
     </li>
   </ul>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script>
 import axios from "axios";
 
-export default defineComponent({
+export default {
   name: "Select",
-  data() {
-    return {
-      listDate: [],
-      listBlocos: [],
-      selectedDate: "quarta",
-    };
-  },
+  data: () => ({
+    listDate: [],
+    listStreetCarnival: [],
+    selectedDate: "quarta",
+  }),
   mounted() {
     this.onChangeDate();
   },
   methods: {
     loadDate() {
       axios
-        .get("https://agenda-blocos-rj-default-rtdb.firebaseio.com/.json", {
-          headers: {
-            Accept: "application/json",
-          },
-        })
+        .get("https://agenda-blocos-rj-default-rtdb.firebaseio.com/.json", {})
         .then((res) => {
           this.listDate = res.data.content;
         });
@@ -54,19 +47,14 @@ export default defineComponent({
       const date = event === undefined ? "quarta" : event.target.value;
       axios
         .get(
-          `https://agenda-blocos-rj-default-rtdb.firebaseio.com/content/0/${date}/.json`,
-          {
-            headers: {
-              Accept: "application/json",
-            },
-          }
+          `https://agenda-blocos-rj-default-rtdb.firebaseio.com/content/0/${date}/.json`
         )
         .then((res) => {
-          this.listBlocos = res.data;
+          this.listStreetCarnival = res.data;
         });
     },
   },
-});
+};
 </script>
 
 <style scoped>
@@ -116,5 +104,13 @@ li {
 
 li:last-child {
   border-bottom: none;
+}
+
+.highlight {
+  color: red;
+}
+
+.title {
+  text-transform: uppercase;
 }
 </style>

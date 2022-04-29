@@ -8,20 +8,19 @@
   <Footer />
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script>
 import Header from "./components/Header.vue";
 import Select from "./components/Select.vue";
 import Footer from "./components/Footer.vue";
 
-export default defineComponent({
+export default {
   name: "App",
   components: {
     Header,
     Select,
     Footer,
   },
-});
+};
 </script>
 
 <style scoped>
